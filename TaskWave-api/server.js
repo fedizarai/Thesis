@@ -59,7 +59,7 @@ app.use((req, res, next) => {
 
 const pool = new Pool({
   user: 'postgres',
-  host: 'localhost',
+  host: '18.234.79.77',
   database: 'taskwave',
   password: '1920', 
   port: 5432,
