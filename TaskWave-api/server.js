@@ -194,7 +194,8 @@ app.post('/signin', (req, res) => {
             });
         
         // Log the cookie that has been set
-        
+        console.log(res.cookie);
+        console.log(res.id);
         console.log(user.position);
         res.json({ message: 'success', position: user.position }); // Indicate success if passwords match
 
