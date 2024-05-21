@@ -190,12 +190,13 @@ app.post('/signin', (req, res) => {
                   maxAge: 36000000,  // 3600000 ms = 1 hour
                   httpOnly: false,   // Now the cookie is accessible via JavaScript
                   secure: false,  // Use secure in production (cookie over HTTPS)
-                  sameSite: 'Lax'    // Lax same-site policy
+                  sameSite: 'Lax',
+                  domain: '3.84.41.95'    // Lax same-site policy
             });
         
         // Log the cookie that has been set
         console.log(res.cookie);
-        console.log(res.id);
+        console.log(user.id);
         console.log(user.position);
         res.json({ message: 'success', position: user.position }); // Indicate success if passwords match
 
@@ -274,7 +275,7 @@ app.get('/profile/:id', async (req, res) => {
 
 app.get('/profile', async (req, res) => {
     const userIdFromCookie = req.cookies['userid']; // Retrieve the user ID from the cookie
-
+    console.log(userIdFromCookie)
 
     if (userIdFromCookie) {
         try {
