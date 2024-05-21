@@ -22,9 +22,10 @@ const Sidebar = (props) => {
   const profileId = Cookies.get('userid');
 
   useEffect(() => {
+    const url = "http://3.84.41.95:3001";
     const fetchUsers = async () => {
       try {
-        const response = await fetch("http://localhost:3001/users");
+        const response = await fetch(url + "/users");
         if (!response.ok) {
           throw new Error("Failed to fetch users");
         }

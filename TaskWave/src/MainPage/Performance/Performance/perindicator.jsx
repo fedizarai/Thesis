@@ -19,12 +19,12 @@ import Offcanvas from "../../../Entryfile/offcanvance";
 const PerformanceIndicator = () => {
   const [users, setUsers] = useState([]);
   const [projects, setProjects] = useState([]);
-  
+  const url = "http://3.84.41.95:3001";
 
   useEffect(() => {
   const fetchProjects = async () => {
     try {
-      const response = await fetch("http://localhost:3001/projects");
+      const response = await fetch(url + "/projects");
       if (!response.ok) {
         throw new Error("Failed to fetch projects");
       }
@@ -38,7 +38,7 @@ const PerformanceIndicator = () => {
   const fetchUsers = async () => {
     try {
       const projectsData = await fetchProjects(); // Ensure projects are fetched first
-      const response = await fetch("http://localhost:3001/users");
+      const response = await fetch(url + "/users");
       if (!response.ok) {
         throw new Error("Failed to fetch users");
       }

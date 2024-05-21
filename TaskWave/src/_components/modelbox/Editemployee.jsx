@@ -6,7 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 const Editemployee = ({ profileId }) => {
    
 
-
+  const url = "http://3.84.41.95:3001";
   const [selectedDate, setSelectedDate] = useState(null);
   const [isTyping, setIsTyping] = useState(false);
   const [formClosed, setFormClosed] = useState(false);
@@ -66,7 +66,7 @@ const Editemployee = ({ profileId }) => {
   try {
     // Make API call to update employee
     console.log('Form Data:', requestBody);
-    const response = await fetch(`http://localhost:3001/editEmployee/${profileId}`, { // Include profileId in the URL
+    const response = await fetch(url + `/editEmployee/${profileId}`, { // Include profileId in the URL
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -114,7 +114,7 @@ const Editemployee = ({ profileId }) => {
       if (!profileId) {
         return; // Exit early if profileId is null or undefined
       }
-      const response = await fetch(`http://localhost:3001/profile/${profileId}`);
+      const response = await fetch(url + `/profile/${profileId}`);
       if (!response.ok) {
         throw new Error("Failed to fetch user data");
       }
@@ -137,7 +137,7 @@ const Editemployee = ({ profileId }) => {
 useEffect(() => {
   const fetchAllUsers = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/users`);
+      const response = await fetch(url + `/users`);
       if (!response.ok) {
         throw new Error("Failed to fetch user data");
       }

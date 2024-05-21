@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Applogo } from "../Entryfile/imagepath.jsx";
 
 const ForgotPassword = () => {
+  const url = "http://3.84.41.95:3001";
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
 
@@ -15,7 +16,7 @@ const ForgotPassword = () => {
     event.preventDefault();
     setMessage(''); // Clear previous messages
     try {
-      const response = await fetch('http://localhost:3001/forgot-password', {
+      const response = await fetch(url + '/forgot-password', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

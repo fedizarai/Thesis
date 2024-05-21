@@ -37,7 +37,7 @@ const AllEmployees = (  ) => {
   const [employeeToEditId, setEmployeeToEditId] = useState(null);
   const profileId = Cookies.get('userid');
   const [userPosition, setUserPosition] = useState('');
-
+  const url = "http://3.84.41.95:3001";
  
 
 
@@ -90,7 +90,7 @@ const AllEmployees = (  ) => {
 const employeeDelete = async (employeeId) => {
   try {
     console.log("Employee to delete ID:", employeeId);
-    const response = await fetch(`http://localhost:3001/deleteEmployee/${employeeId}`, {
+    const response = await fetch(url + `/deleteEmployee/${employeeId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -128,7 +128,7 @@ const employeeDelete = async (employeeId) => {
    useEffect(() => {
     const fetchUsers = async () => {
         try {
-            const response = await fetch("http://localhost:3001/users");
+            const response = await fetch(url + "/users");
             if (!response.ok) {
                 throw new Error("Failed to fetch users");
             }

@@ -8,6 +8,7 @@ import { DefaultEditor } from "react-simple-wysiwyg";
 
 const Editproject = ({projectId}) => {
 
+  const url = "http://3.84.41.95:3001";
   const [projects, setProjects] = useState([]);
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState('');
@@ -159,7 +160,7 @@ const Editproject = ({projectId}) => {
     }
 
     try {
-        const response = await fetch(`http://localhost:3001/projects/${projectId}`, {
+        const response = await fetch(url + `/projects/${projectId}`, {
             method: 'PUT',
             body: data, // Using FormData which automatically sets Content-Type to multipart/form-data
         });
@@ -189,7 +190,7 @@ const Editproject = ({projectId}) => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await fetch('http://localhost:3001/projects');
+        const response = await fetch(url + '/projects');
         if (!response.ok) {
           throw new Error('Failed to fetch projects');
         }
@@ -210,7 +211,7 @@ const Editproject = ({projectId}) => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch("http://localhost:3001/users");
+        const response = await fetch(url + "/users");
         if (!response.ok) {
           throw new Error("Failed to fetch users");
         }
@@ -227,7 +228,7 @@ const Editproject = ({projectId}) => {
    useEffect(() => {
     const fetchProjectDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/projects`);
+        const response = await fetch(url + `/projects`);
         if (!response.ok) {
           throw new Error('Failed to fetch project details');
         }

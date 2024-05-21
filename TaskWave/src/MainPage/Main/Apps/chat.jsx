@@ -29,7 +29,7 @@ const Chat = () => {
   const [projects, setProjects] = useState([]);
   const chatBoxRef = useRef(null);
 
-
+  const url = "http://3.84.41.95:3001";
   const [windowDimension, detectHW] = useState({
     winWidth: window.innerWidth,
     winHeight: window.innerHeight,
@@ -40,7 +40,7 @@ const Chat = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch("http://localhost:3001/users");
+        const response = await fetch(url + "/users");
         const usersArray = await response.json();
         if (response.ok) {
           const usersById = {};
@@ -62,7 +62,7 @@ const Chat = () => {
   
   useEffect(() => {
     if (userId.current) {
-      const newSocket = io("http://localhost:3001", {
+      const newSocket = io(url, {
         query: { userId: userId.current },
         reconnection: true,
         reconnectionAttempts: 10,
@@ -139,7 +139,7 @@ const Chat = () => {
   useEffect(() => {
     const fetchMessages = async () => {
         try {
-            const response = await fetch(`http://localhost:3001/chat/${projectId}`);
+            const response = await fetch(url + `/chat/${projectId}`);
             if (!response.ok) throw new Error('Failed to fetch');
             const data = await response.json();
             setMessages(data);
@@ -158,7 +158,7 @@ const Chat = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await fetch('http://localhost:3001/projects');
+        const response = await fetch(url + '/projects');
         if (!response.ok) {
           throw new Error('Failed to fetch projects');
         }

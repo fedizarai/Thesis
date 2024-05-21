@@ -17,6 +17,7 @@ import {
 } from "../../Entryfile/imagepath";
 
 const Header = (props) => {
+  const url = "http://3.84.41.95:3001";
   const [notifications, setNotifications] = useState([]);
    const [showNotificationsDropdown, setShowNotificationsDropdown] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -40,7 +41,7 @@ const Header = (props) => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch("http://localhost:3001/users");
+        const response = await fetch(url + "/users");
         const data = await response.json();
         setUsers(data);
         const user = data.find(user => user.id === parseInt(profileId));
@@ -61,7 +62,7 @@ const Header = (props) => {
     const fetchNotifications = async () => {
       setLoading(true);
       try {
-        const response = await fetch("http://localhost:3001/notifications", {
+        const response = await fetch(url + "/notifications", {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -94,7 +95,7 @@ const Header = (props) => {
     useEffect(() => {
       const fetchProjects = async () => {
         try {
-          const response = await fetch('http://localhost:3001/projects');
+          const response = await fetch(url + '/projects');
           if (!response.ok) {
             throw new Error('Failed to fetch projects');
           }
@@ -116,7 +117,7 @@ const Header = (props) => {
     const fetchAllMessages = async () => {
         setLoading(true);
         try {
-            const response = await fetch('http://localhost:3001/chat', {
+            const response = await fetch(url + '/chat', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

@@ -14,7 +14,7 @@ import Offcanvas from "../../../Entryfile/offcanvance";
 import ProjectCard from "../../Employees/Projects/ProjectCard";
 
 const EmployeeProfile = () => {
-  
+  const url = "http://3.84.41.95:3001";
   const [loginError, setLoginError] = useState("");
   const [selectedDate, setSelectedDate] = useState(null);
   const [isTyping, setIsTyping] = useState(false);
@@ -88,7 +88,7 @@ const EmployeeProfile = () => {
     };
 
     try {
-        const response = await fetch('http://localhost:3001/update-profile', {
+        const response = await fetch(url + '/update-profile', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload),
@@ -154,7 +154,7 @@ const findImageByName = (name) => {
 useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await fetch('http://localhost:3001/projects');
+        const response = await fetch(url + '/projects');
         if (!response.ok) {
           throw new Error('Failed to fetch projects');
         }
@@ -174,7 +174,7 @@ useEffect(() => {
 
 useEffect(() => {
   // Fetch profile data
-  fetch(`http://localhost:3001/profile/${profileId}`)
+  fetch(url + `/profile/${profileId}`)
     .then((response) => {
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -184,7 +184,7 @@ useEffect(() => {
     .then((data) => {
       setProfileData(data);
       // Fetch all user data
-      fetch('http://localhost:3001/users')
+      fetch(url + '/users')
         .then((response) => {
           if (!response.ok) {
             throw new Error("Failed to fetch user data");

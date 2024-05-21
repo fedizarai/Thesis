@@ -18,12 +18,12 @@ import { itemRender, onShowSizeChange } from "../paginationfunction";
 import "../antdstyle.css";
 
 const Leads = () => {
-
+    const url = "http://3.84.41.95:3001";
     const [leads, setLeads] = useState([]);
 
     const fetchLeads = async () => {
      try {
-      const response = await fetch("http://localhost:3001/users");
+      const response = await fetch(url + "/users");
       if (response.ok) {
         const data = await response.json();
         // Filter users based on position

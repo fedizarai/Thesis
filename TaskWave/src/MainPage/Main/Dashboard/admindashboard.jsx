@@ -25,6 +25,7 @@ import { Link } from "react-router-dom/cjs/react-router-dom.js";
 import RecentTable from "./Table/RecentTable.jsx";
 
  const AdminDashboard = () => {
+ const url = "http://3.84.41.95:3001";
  const [menu, setMenu] = useState(false);
  const [users, setUsers] = useState([]);
  const [projects, setProjects] = useState([]);
@@ -63,7 +64,7 @@ useEffect(() => {
   const fetchData = async () => {
     try {
       // Fetch projects data
-      const projectsResponse = await fetch('http://localhost:3001/projects');
+      const projectsResponse = await fetch(url + '/projects');
       if (!projectsResponse.ok) {
         throw new Error('Failed to fetch projects');
       }
@@ -71,7 +72,7 @@ useEffect(() => {
       setProjects(projectsData);
 
       // Fetch users data
-      const usersResponse = await fetch("http://localhost:3001/users");
+      const usersResponse = await fetch(url + "/users");
       if (!usersResponse.ok) {
         throw new Error("Failed to fetch users");
       }
@@ -116,7 +117,7 @@ useEffect(() => {
    useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch("http://localhost:3001/users");
+        const response = await fetch(url + "/users");
         if (!response.ok) {
           throw new Error("Failed to fetch users");
         }

@@ -5,6 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 const Addemployee = () => {
 
+  const url = "http://3.84.41.95:3001";
   const [selectedDate, setSelectedDate] = useState(null);
   const [isTyping, setIsTyping] = useState(false);
   const [formClosed, setFormClosed] = useState(false);
@@ -58,7 +59,7 @@ const Addemployee = () => {
    try {
     // Make API call to add employee
     console.log('Form Data:', formData);
-    const response = await fetch('http://localhost:3001/addEmployee', {
+    const response = await fetch(url + '/addEmployee', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -98,7 +99,7 @@ const Addemployee = () => {
  useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch("http://localhost:3001/users");
+        const response = await fetch(url +"/users");
         if (!response.ok) {
           throw new Error("Failed to fetch users");
         }

@@ -24,7 +24,7 @@ import Offcanvas from "../../../Entryfile/offcanvance";
 const ProjectList = ({projects}) => {
 
   const id=1;
-  
+  const url = "http://3.84.41.95:3001";
   const [focused, setFocused] = useState(false);
   const [focused1, setFocused1] = useState(false);
   const [selectedDate1, setSelectedDate1] = useState(null);
@@ -230,7 +230,7 @@ const handleSubmit = async (e) => {
 
   // Make the POST request to the server
   try {
-    const response = await fetch('http://localhost:3001/projects', {
+    const response = await fetch(url + '/projects', {
       method: 'POST',
       body: data, // Fetch API sets the Content-Type to multipart/form-data automatically
     });
@@ -271,7 +271,7 @@ const handleSubmit = async (e) => {
     const fetchUsers = async () => {
         console.log("Fetching users...");
         try {
-            const response = await fetch("http://localhost:3001/users");
+            const response = await fetch(url + "/users");
             if (!response.ok) {
                 throw new Error("Failed to fetch users");
             }

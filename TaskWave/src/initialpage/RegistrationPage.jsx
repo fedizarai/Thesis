@@ -7,6 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { emailrgx } from "../constant";
 
+const url = "http://3.84.41.95:3001";
 const schema = yup
   .object({
     email: yup
@@ -59,7 +60,7 @@ const Registrationpage = (props) => {
     password: data.password,
   };
 
-  fetch('http://localhost:3001/register', {
+  fetch(url + '/register', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

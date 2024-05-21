@@ -25,7 +25,7 @@ import Offcanvas from "../../../Entryfile/offcanvance";
 import { DefaultEditor } from "react-simple-wysiwyg";
 
 const ProjectView = ({ projects }) => {
-
+  const url = "http://3.84.41.95:3001"
   const { taskId } = useParams();
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [taskDetails, setTaskDetails] = useState(null);
@@ -61,7 +61,7 @@ const ProjectView = ({ projects }) => {
     data.append('taskId', selectedTask);
 
     try {
-      const response = await fetch(`http://localhost:3001/projects/${taskId}/tasks/${selectedTask}/solutionFiles`, {
+      const response = await fetch(url + `/projects/${taskId}/tasks/${selectedTask}/solutionFiles`, {
         method: 'POST',
         body: data,
         credentials: 'include'
@@ -123,7 +123,7 @@ const ProjectView = ({ projects }) => {
     console.log('fileId',fileId);
     // Call the backend to delete the file
     try {
-        const response = await fetch(`http://localhost:3001/files/${fileId}`, {
+        const response = await fetch(url + `/files/${fileId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -204,7 +204,7 @@ const ProjectView = ({ projects }) => {
       return;
     }
     // Assuming fetch API call or similar to backend
-    fetch('http://localhost:3001/assign', {
+    fetch(url + '/assign', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({ projectId: taskId,taskId: tasksId, userId: user.id })
@@ -227,7 +227,7 @@ const ProjectView = ({ projects }) => {
      console.log('newStatus',newStatus);
     try {
    
-    const response = await fetch('http://localhost:3001/updateTaskStatus', {
+    const response = await fetch(url + '/updateTaskStatus', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

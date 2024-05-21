@@ -26,7 +26,7 @@ import {
 } from "../../../Entryfile/imagepath";
 
 const Projects = ({projects}) => {
-
+  const url = "http://3.84.41.95:3001";
   const [html, setHtml] = React.useState("my <b>HTML</b>");
   const [focused, setFocused] = useState(false);
   const [focused1, setFocused1] = useState(false);
@@ -71,7 +71,7 @@ const Projects = ({projects}) => {
   };
 const handleDeleteProject = async (projectId) => {
   try {
-    const response = await fetch(`http://localhost:3001/projects/${projectId}`, {
+    const response = await fetch(url + `/projects/${projectId}`, {
       method: 'DELETE'
     });
     if (!response.ok) {
@@ -267,7 +267,7 @@ const handleSubmit = async (e) => {
 
   
   try {
-    const response = await fetch('http://localhost:3001/projects', {
+    const response = await fetch(url + '/projects', {
       method: 'POST',
       body: data, 
     });
@@ -293,7 +293,7 @@ const handleSubmit = async (e) => {
   useEffect(() => {
     const fetchUsers = async () => {
         try {
-            const response = await fetch("http://localhost:3001/users");
+            const response = await fetch(url + "/users");
             if (!response.ok) {
                 throw new Error("Failed to fetch users");
             }

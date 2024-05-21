@@ -20,11 +20,11 @@ const transporter = nodemailer.createTransport({
 });
 
 
-
+const url_cors = "http://3.84.58.36:3000";
 const app =express();
 
 const corsOptions = {
-  origin: 'http://localhost:3000', 
+  origin: url_cors, 
   credentials: true, 
 };
 

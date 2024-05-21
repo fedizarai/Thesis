@@ -4,12 +4,13 @@ import { Link } from 'react-router-dom';
 import { User, Avatar_02, Avatar_05, Avatar_09, Avatar_10 } from "../../Entryfile/imagepath"
 
 const Chatsidebar = () => {
+  const url = "http://3.84.41.95:3001";
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await fetch('http://localhost:3001/projects');
+        const response = await fetch(url + '/projects');
         if (!response.ok) {
           throw new Error('Failed to fetch projects');
         }

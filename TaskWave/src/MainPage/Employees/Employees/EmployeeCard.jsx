@@ -12,7 +12,7 @@ import Cookies from 'js-cookie';
 
 
 const EmployeeCard = ({ employee,onDeleteClick,onEditClick  }) =>  {
-
+  const url = "http://3.84.41.95:3001";
   const { id, name,role,image,employee_id} = employee;
   const profileId = Cookies.get('userid');
   const [users, setUsers] = useState([]);
@@ -20,7 +20,7 @@ const EmployeeCard = ({ employee,onDeleteClick,onEditClick  }) =>  {
   useEffect(() => {
     const fetchUsers = async () => {
         try {
-            const response = await fetch("http://localhost:3001/users");
+            const response = await fetch(url + "/users");
             if (!response.ok) {
                 throw new Error("Failed to fetch users");
             }

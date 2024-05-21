@@ -10,6 +10,7 @@ import { yupResolver } from "@hookform/resolvers/yup/dist/yup.js";
 import Cookies from 'js-cookie';
 
 const Loginpage = (props) => {
+  const url = "http://3.84.41.95:3001";
   const [loginError, setLoginError] = useState('');
   const profileId = Cookies.get('userid');
   const [users, setUsers] = useState([]);
@@ -19,7 +20,7 @@ const Loginpage = (props) => {
   useEffect(() => {
     const fetchUsers = async () => {
         try {
-            const response = await fetch("http://localhost:3001/users");
+            const response = await fetch(url + "/users");
             if (!response.ok) {
                 throw new Error("Failed to fetch users");
             }
@@ -66,7 +67,7 @@ const Loginpage = (props) => {
 
   const onSubmit = (data) => {
       console.log('sigin in data',data);
-      fetch('http://localhost:3001/signin', {
+      fetch(url + '/signin', {
         method: 'POST',
         headers: {
          'Content-Type': 'application/json',

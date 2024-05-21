@@ -22,7 +22,7 @@ import Cookies from 'js-cookie';
 
 const Employeeslist = ( ) => {
 
-  
+  const url = "http://3.84.41.95:3001";
   const [menu, setMenu] = useState(false);
   const [focused, setFocused] = useState(false);
   const [focused1, setFocused1] = useState(false);
@@ -83,7 +83,7 @@ const Employeeslist = ( ) => {
    useEffect(() => {
     const fetchUsers = async () => {
         try {
-            const response = await fetch("http://localhost:3001/users");
+            const response = await fetch(url + "/users");
             if (!response.ok) {
                 throw new Error("Failed to fetch users");
             }
