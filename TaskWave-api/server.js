@@ -188,7 +188,7 @@ app.post('/signin', (req, res) => {
         // Setting a cookie named 'userid' with the user's ID, expires after 1 hour
         res.cookie('userid', user.id, {
                   maxAge: 36000000,  // 3600000 ms = 1 hour
-                  httpOnly: false,   // Now the cookie is accessible via JavaScript
+                  httpOnly: true,   // Now the cookie is accessible via JavaScript
                   secure: false,  // Use secure in production (cookie over HTTPS)
                   sameSite: 'Lax',
                   domain: '3.84.41.95'    // Lax same-site policy
