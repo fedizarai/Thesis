@@ -200,7 +200,10 @@ useEffect(() => {
     .then((data) => {
       setProfileData(data);
       // Fetch all user data
-      fetch(url + '/users')
+      fetch(url + '/users', {
+        method: 'GET',
+        credentials: 'include'  // Ensures cookies are sent with the request
+      })
         .then((response) => {
           if (!response.ok) {
             throw new Error("Failed to fetch user data");

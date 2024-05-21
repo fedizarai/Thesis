@@ -275,7 +275,7 @@ app.get('/profile/:id', async (req, res) => {
 
 app.get('/profile', async (req, res) => {
     const userIdFromCookie = req.cookies['userid']; // Retrieve the user ID from the cookie
-    console.log(userIdFromCookie)
+    console.log(req.cookies)
 
     if (userIdFromCookie) {
         try {
